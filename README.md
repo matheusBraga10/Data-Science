@@ -8,3 +8,4 @@ Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
  - [Versionamento de Código com Git e GitHub](https://web.dio.me/course/versionamento-de-codigo-com-git-e-github/learning/f3cbaa66-efbd-4c25-842e-2069c188c066?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Como Entregar seu Desafio de Projeto](https://web.dio.me/course/como-entregar-seu-desafio-de-projeto/learning/488fc49a-0738-4e9d-bf87-ea22d2591fde?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Contribuindo em um Projeto Open Source no GitHub](https://web.dio.me/lab/desafio-de-projeto-contribuindo-em-um-projeto-open-source-no-github/learning/8e9e1f35-5571-40c4-863f-2279ba388aeb)
+ - 
