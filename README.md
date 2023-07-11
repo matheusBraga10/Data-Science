@@ -1,2 +1,4 @@
 # Data-Science
- Criação de um projeto de Data Science em Python e outras linguagens
+Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
+ ## BootCamp - Ifood
+  - 
