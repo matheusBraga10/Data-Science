@@ -11,4 +11,6 @@ Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
  - [Ambiente de desenvolvimento e Primeios passos com Python](https://web.dio.me/course/ambiente-de-desenvolvimento-e-primeiros-passos-com-python/learning/1ecc1827-27d0-4395-8bd2-7738e44ae5b3?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Conhecendo a Linguagem de programação Python](https://web.dio.me/course/conhecendo-a-linguagem-de-programacao-python/learning/81ce773a-b004-43b8-bdc1-1f150df40f96?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Tipos de Operadores com Python](https://web.dio.me/course/tipos-de-operadores-com-python/learning/6df69727-d6c2-4956-b81b-2f3c21427c11?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
- - 
+ - [Estruturas Condicionais e de repetição em Python](https://web.dio.me/course/estruturas-condicionais-e-de-repeticao-em-python/learning/f9b78902-9c92-4a12-b411-9b78a56b15d1?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
+ - [Manipulando String com Python](https://web.dio.me/course/manipulando-strings-com-python/learning/b67433a9-2fc7-41cc-8db0-c0ddd3964198?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
+ -
