@@ -13,4 +13,5 @@ Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
  - [Tipos de Operadores com Python](https://web.dio.me/course/tipos-de-operadores-com-python/learning/6df69727-d6c2-4956-b81b-2f3c21427c11?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Estruturas Condicionais e de repetição em Python](https://web.dio.me/course/estruturas-condicionais-e-de-repeticao-em-python/learning/f9b78902-9c92-4a12-b411-9b78a56b15d1?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
  - [Manipulando String com Python](https://web.dio.me/course/manipulando-strings-com-python/learning/b67433a9-2fc7-41cc-8db0-c0ddd3964198?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
- -
+ - [Cirando um Sistema Bancário com Python](https://web.dio.me/project/desafio-de-projeto-criando-um-sistema-bancario/learning/fa812356-0da6-4a85-9ffb-8b255748a288?back=/track/potencia-tech-powered-ifood-ciencias-de-dados-com-python&tab=undefined&moduleId=undefined)
+ - 
