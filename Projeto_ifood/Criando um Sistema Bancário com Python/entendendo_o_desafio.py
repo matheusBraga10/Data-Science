@@ -22,11 +22,6 @@ saldo = 0
 limite = 500
 numero_de_saques = 0
 LIMITE_DE_SAQUES = 3
-extrato = f'''[3] - Extrato
-
-Seu saldo atual é de: R$:{saldo:.2f} .
-Seu limite atual é de: R${limite:.2f} .
-Você ainda tem direito de realizar mais {numero_de_saques} saques.'''
 while True:
 
     opcao = input(f'{menu}\n Opção: ')
@@ -56,6 +51,12 @@ while True:
                 print('Você chegou ao limite de saques por dia, ou ultrapassou seu limite de crédito.')
                 break
     elif opcao == '3':
+        extrato = f'''[3] - Extrato
+
+Seu saldo atual é de: R$:{saldo:.2f} .
+Seu limite atual é de: R${limite:.2f} .
+Você ainda tem direito de realizar mais {3 - numero_de_saques} saques.'''
+
         print(extrato)
         
     elif opcao == '4':
