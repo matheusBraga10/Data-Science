@@ -13,6 +13,13 @@ saldo = 0
 limite = 500
 numero_de_saques = 0
 LIMITE_DE_SAQUES = 3
+extrato = f'''
+
+{'='*20}
+EXTRATO
+{'='*20}
+
+'''
 while True:
 
     opcao = input(f'{menu}\n Opção: ')
@@ -22,6 +29,7 @@ while True:
         valor = float(input('\nQual o valor deseja depositar na conta? '))
         if valor > 0:
             saldo = saldo + valor
+            extrato = extrato + f'Depósito R$: {valor:.2f}\n\n'
             print(f'Seu depósito de R$:{valor:.2f} foi realizado com sucesso.')
         else:
             print('O valor não pode ser efetuado. Por favor, tente novamente.')
@@ -34,6 +42,7 @@ while True:
                 numero_de_saques = numero_de_saques + 1
                 limite = limite - saque
                 saldo = saldo - saque
+                extrato = extrato + f'Saque R$: {saque:.2f}\nLimite restante R$: {limite:.2f}\nNumero de saques diários restantes:  {LIMITE_DE_SAQUES - numero_de_saques}\nSaldo em conta R$: {saldo:.2f}\n\n'
                 print(f'''Saque de R$:{saque:.2f} efetuado com sucesso. Retire seu dinheiro.
                       Seu saldo foi atualizado para R$:{saldo:.2f} .
                       ''')
@@ -42,12 +51,6 @@ while True:
                 print('Você chegou ao limite de saques por dia, ou ultrapassou seu limite de crédito.')
                 break
     elif opcao == '3':
-        extrato = f'''[3] - Extrato
-
-Seu saldo atual é de: R$:{saldo:.2f} .
-Seu limite atual é de: R${limite:.2f} .
-Você ainda tem direito de realizar mais {LIMITE_DE_SAQUES - numero_de_saques} saques.'''
-
         print(extrato)
         
     elif opcao == '4':
