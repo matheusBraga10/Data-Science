@@ -1,13 +1,4 @@
-'''Fomos contratados por um grande banco para
-desenvolver o seu novo sistema. Esse banco deseja
-modernizar suas operações e para isso escolheu a 
-linguagem Python. Para a primeira versão do sistema
-devemos umplementar apenas 3 operações:
-
-- Depósito
-- Saque
-- Extrato
-'''
+# Desafio - Sistema Bancário com Python
 menu = f'''
 {'='*20}
 
@@ -55,7 +46,7 @@ while True:
 
 Seu saldo atual é de: R$:{saldo:.2f} .
 Seu limite atual é de: R${limite:.2f} .
-Você ainda tem direito de realizar mais {3 - numero_de_saques} saques.'''
+Você ainda tem direito de realizar mais {LIMITE_DE_SAQUES - numero_de_saques} saques.'''
 
         print(extrato)
         
