@@ -51,6 +51,7 @@ while True:
                 print('Você chegou ao limite de saques por dia, ou ultrapassou seu limite de crédito.')
                 break
     elif opcao == '3':
+        extrato = extrato + f'Saldo atual: R$:{saldo:.2f}\n'
         print(extrato)
         
     elif opcao == '4':
