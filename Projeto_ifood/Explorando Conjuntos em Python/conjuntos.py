@@ -20,7 +20,7 @@ print()
 # Para ter acesso aos dados, precisamos de converter o conjunto para listas
 
 numeros = {1,2,3,4,2,3,4}
-print(numeros[0]) # Dá erro, pois o conjunto não permite
+#print(numeros[0]) # Dá erro, pois o conjunto não permite
 numeros = list(numeros)
 
 # Acessando dados após a conversão
@@ -39,8 +39,8 @@ print()
 print()
 #-------------------------------------------------------
 # {}.union - União
-cunjunto_a = {1,2}
-cunjunto_b = {2,3,4}
+conjunto_a = {1,2,3,4,5,6,7,8}
+conjunto_b = {2,3,4}
 
 print(conjunto_a.union(conjunto_b)) 
 print()
@@ -70,7 +70,7 @@ print(conjunto_a.isdisjoint(conjunto_b))
 print()
 #-------------------------------------------------------
 # {}.add
-print(conjunto_a.add(conjunto_b))
+print(conjunto_a.add(23))
 print()
 #-------------------------------------------------------
 # {}.clear
@@ -86,11 +86,14 @@ print(conjunto_a.discard(1))
 print()
 #-------------------------------------------------------
 # {}.pop
-print(conjunto_a.pop())
+conjunto_c = {1,2,3,4,5}
+conjunto_c.pop()
+print(conjunto_c)
 print()
 #-------------------------------------------------------
 # {}.remove
-print(conjunto_a.remove(1))
+conjunto_c.remove(2)
+print(conjunto_c)
 print()
 #-------------------------------------------------------
 # {}.len
@@ -98,8 +101,8 @@ len(conjunto_a)
 print()
 #-------------------------------------------------------
 # {}.in
-in(conjunto_a)
-
+1 in conjunto_a
+101 in conjunto_a
 
 
 
