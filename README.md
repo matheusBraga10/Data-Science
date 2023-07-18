@@ -14,5 +14,6 @@ Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
  - [Estruturas Condicionais e de repetição em Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Estruturas%20condicionais%20e%20de%20Repeticao%20em%20Python)
  - [Manipulando String com Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Manipulando%20Strings%20com%20Python)
  - [Criando um Sistema Bancário com Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Criando%20um%20Sistema%20Banc%C3%A1rio%20com%20Python)
- - [Trabalhando com Listas em Python]()
+ - [Trabalhando com Listas em Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Trabalhando%20com%20Listas%20em%20Python)
+ 
  - 
