@@ -16,4 +16,4 @@ Repositório para armazenar estudos sobre Data Science de cursos e bootcamps
  - [Criando um Sistema Bancário com Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Criando%20um%20Sistema%20Banc%C3%A1rio%20com%20Python)
  - [Trabalhando com Listas em Python](https://github.com/matheusBraga10/Data-Science/tree/science/Projeto_ifood/Trabalhando%20com%20Listas%20em%20Python)
  
- - 
+ - [Conhecendo Tuplas em Python]()
