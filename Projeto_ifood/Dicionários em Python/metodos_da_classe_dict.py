@@ -33,7 +33,7 @@ print(contatos.get('004'))
 
 print()
 #-------------------------------------------
-#{}.items - Retorna lista de tuplas para ser posséível iterar
+#{}.items - Retorna lista de tuplas para ser possível iterar
 contatos.items()
 print(contatos)
 print()
