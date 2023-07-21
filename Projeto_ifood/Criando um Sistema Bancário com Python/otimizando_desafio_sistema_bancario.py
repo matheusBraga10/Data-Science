@@ -1,4 +1,9 @@
-def titulo(mensagem):
+def titulo(mensagem): 
+    '''
+    --> Imprime uma mensagem de título, com formatação padrão
+    
+    Função criada por Matheus Felipe Braga
+    '''
     print('-'*30)
     print(mensagem)
     print('-'*30)
@@ -21,11 +26,14 @@ def deposito():
     valor = float(input('Informe o valor que deseja depositar. ==>  '))
     if valor > 0:
         saldo = saldo + valor
+        
         titulo('   VALOR DEPOSITADO COM SUCESSO')
     else:
         titulo('~~~ ERRO. Valor inválido. Tente novamente. ~~~')
 
-        
+
+def saque():
+
 def opcoes():
     while True:
         opcao = menu()
