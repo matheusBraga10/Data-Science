@@ -16,9 +16,39 @@ def menu():
 
 INFORME A OPÇÃO DESEJADA ==>  ''')
     return int(input(menu))
-               
 
+def deposito():
+    valor = float(input('Informe o valor que deseja depositar. ==>  '))
+    if valor > 0:
+        saldo = saldo + valor
+        titulo('   VALOR DEPOSITADO COM SUCESSO')
+    else:
+        titulo('~~~ ERRO. Valor inválido. Tente novamente. ~~~')
 
+        
+def opcoes():
+    while True:
+        opcao = menu()
+
+        if opcao == 1:
+            titulo('   DEPOSITO   ')
+            deposito()
+
+        elif opcao == 2:
+
+        elif opcao == 3:
+
+        elif opcao == 4:
+
+        elif opcao == 5:
+
+        elif opcao == 6:
+
+        elif opcao == 7:
+            titulo('   SAINDO DO PROGRAMA   ')
+            break
+        else:
+            titulo('   OPÇÃO INVÁLIDA. TENTE NOVAMENTE!   ')
 
 
 
