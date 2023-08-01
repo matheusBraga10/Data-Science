@@ -22,29 +22,90 @@ def menu():
 INFORME A OPÇÃO DESEJADA ==>  ''')
     return int(input(menu))
 
-def deposito():
-    valor = float(input('Informe o valor que deseja depositar. ==>  '))
+def deposito(saldo, valor, extrato, /):
+    valor = float(input('Informe o valor que deseja depositar.\n\n==>  '))
+    dados()
     if valor > 0:
         saldo = saldo + valor
-        
-        titulo('   VALOR DEPOSITADO COM SUCESSO')
+        extrato = extrato + f'Depósito: R$ {valor:.2f}\n'
+        titulo('   VALOR DEPOSITADO COM SUCESSO   ')
     else:
         titulo('~~~ ERRO. Valor inválido. Tente novamente. ~~~')
+    
+    return saldo, extrato
+
+def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
+    valor = float(input('Informe o valor que deseja sacar.\n\n==>  '))
+    dados()
+    excedeu_saldo = valor > saldo
+    excedeu_limite = valor > limite
+    excedeu_saques = numero_saques > limite_saques - 1
+
+    if excedeu_saldo:
+        titulo('~~~ Falha. Saldo insuficiente. ~~~')
+    elif excedeu_limite:
+        titulo('~~~ Falha. O valor do saque excedeu o limite. ~~~')
+    elif excedeu_saques:
+        titulo('~~~ Falha. Você excedeu o número limite de saques diários. ~~~')
+    elif valor > 0:
+        saldo = saldo + valor
+        extrato = extrato + f'Depósito: R$ {valor:.2f}\n'
+        numero_saques = numero_saques + 1
+        titulo('  SAQUE REALIZADO COM SUCESSO.  ')
+    else:
+        titulo('~~~ Falha. Valor informado inválido. ~~~')
+
+    return saldo, extrato
 
 
-def saque():
+def imprime_extrato(saldo, /, *, extrato):
+    if not extrato:
+        titulo('~~~ Não existem movimentações em sua conta. ~~~')
+    else:
+        titulo(f'   Saldo: R$ {saldo:.2f}.   ')
 
-def opcoes():
+
+def cria_conta():
+
+
+def filtra_usuario():
+
+def lista_contas():
+
+
+def dados():
+    LIMITE_SAQUES = 3
+    AGENCIA = '0001'
+
+    saldo = 0
+    limite = 500
+    extrato = ''
+    numero_saques = 0
+    usuarios = []
+    contas = []
+
+
+def main():
+    
     while True:
         opcao = menu()
 
         if opcao == 1:
-            titulo('   DEPOSITO   ')
-            deposito()
+            titulo('   DEPOSITO   \n')
+            saldo, extrato = deposito(saldo, valor, extrato)
 
         elif opcao == 2:
+            saldo, extrato = saque(
+                saldo=saldo,
+                valor=valor,
+                extrato=extrato,
+                limite=limite,
+                numero_saques=numero_saques,
+                limite_saques=LIMITE_SAQUES,
+            )
 
         elif opcao == 3:
+            imprime_extrato(saldo, extrato=extrato)
 
         elif opcao == 4:
 
