@@ -10,6 +10,12 @@ def titulo(mensagem):
 
 
 def menu():
+    '''
+    --> Imprime na tela um menu com as opções, pedindo para digitar a opção desejada
+        - inputar um numero inteiro para a opção desejada
+    
+    Função criada por Matheus Felipe Braga
+    '''
     titulo('   MENU PRINCIPAL   ')
     print(f'''
 [1] - DEPOSITO
@@ -25,6 +31,18 @@ INFORME A OPÇÃO DESEJADA ==>  ''')
 
 
 def deposito(saldo, valor, extrato, /):
+    '''
+    - Deposita valor na conta 
+        - Todos os parâmetros deverão ser por preposição
+        - Pede para digitar um valor flutuante.
+        - Se o valor for maior que 0: 
+            - O valor será somado ao saldo. O valor também será somado ao extrato.
+            - Caso contrário, retornará uma menságem de erro.
+    - Deve retornar os valores salvos somados (saldo, extrato)
+    
+    Função criada por Matheus Felipe Braga
+    '''
+    
     valor = float(input('Informe o valor que deseja depositar.\n\n==>  '))
     if valor > 0:
         saldo = saldo + valor
@@ -37,6 +55,22 @@ def deposito(saldo, valor, extrato, /):
 
 
 def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
+    '''
+    - Efetua saque 
+        - Todos os parâmetros devem ser nomeados
+        - Pede para entrar com o valor flutuante a ser sacado.
+            - Se valor > saldo, programa aponta falha por exceder o saldo.
+            - Se valor > limite, programa aponta falha por exceder limite.
+            - Se numero de saques > limite de saques, programa aponta falha por exceder numero de saques diários.
+            - Se valor > 0:
+                - valor é subtraído no saldo.
+                - extrato é subtraído do extrato.
+                - numero de saques é somado com +1 a cada novo saque.
+            - Se não, o programa deve apontar falha por valor inválido.
+    - Retorna saldo e extrato.
+
+    Função criada por Matheus Felipe Braga
+    '''
     valor = float(input('Informe o valor que deseja sacar.\n\n==>  '))
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
@@ -49,8 +83,8 @@ def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     elif excedeu_saques:
         titulo('~~~ Falha. Você excedeu o número limite de saques diários. ~~~')
     elif valor > 0:
-        saldo = saldo + valor
-        extrato = extrato + f'Depósito: R$ {valor:.2f}\n'
+        saldo = saldo - valor
+        extrato = extrato - f'Depósito: R$ {valor:.2f}\n'
         numero_saques = numero_saques + 1
         titulo('  SAQUE REALIZADO COM SUCESSO.  ')
     else:
@@ -60,13 +94,34 @@ def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
 
 def imprime_extrato(saldo, /, *, extrato):
-    if not extrato:
-        titulo('~~~ Não existem movimentações em sua conta. ~~~')
-    else:
+    '''
+    - Imprime o extrato.
+        - Se existir valor em extrato, imprimir o extrato
+        - Se não, mostrar que não existem movimentações feitas.
+
+    Função criada por Matheus Felipe Braga
+    '''
+
+    if extrato:
         titulo(f'   Saldo: R$ {saldo:.2f}.   ')
+    else:
+        titulo('~~~ Não existem movimentações em sua conta. ~~~')
 
 
 def cria_usuario(usuarios):
+    '''
+    - Cria usuário:
+        - Cadastra dados do usuário:
+            - Pede string CPF.
+                - Caso haja CPF igual já cadastrado, o programa retorna com mensagem de erro.
+            - Pede string nome.
+            -  Pede string data de nascimento.
+            - Pede string endereço.
+        - Cria um dicionário do usuário
+
+    Função criada por Matheus Felipe Braga
+    '''
+
     cpf = input('Informe o CPF (somente os números).\n==>  ')
     usuario = filtra_usuario(cpf, usuario)
 
@@ -85,6 +140,15 @@ def cria_usuario(usuarios):
 
 
 def filtra_usuario(cpf, usuarios):
+    '''
+    - Filtra usuário pelo CPF
+        - Para cada usuário no banco de dados:
+            - Se o CPF do usuário for igual
+                - retorna o dicionário deste usuário
+            - Se não, retorna nulo.
+
+    Função criada por Matheus Felipe Braga
+    '''
     filtro_de_usuarios = usuario['cpf']
 
     for usuario in usuarios:
@@ -95,6 +159,19 @@ def filtra_usuario(cpf, usuarios):
     
 
 def cria_conta(agencia, numero_conta, usuarios, contas):
+    '''
+    - Cria conta, com base nos dados do usuário cadastrado.
+        - Pede a string CPF.
+        - Filtra o CPF com base nos dados dos usários cadastrados.
+        - Se existir o CPF no banco de dados
+            - Imprime mensagem de conta criada
+            - Retorna os dados adicionados no dicionário do usuário, para o usuário correto.
+                - Agencia, numero da conta, usuário.
+        - Se não
+            - Imprime falha, usuário não encontrado.
+
+    Função criada por Matheus Felipe Braga'''
+
     cpf = input('Informe o CPF (somente os números).\n==>  ')
     usuario = filtra_usuario(cpf, usuarios)
 
@@ -106,9 +183,23 @@ def cria_conta(agencia, numero_conta, usuarios, contas):
 
 
 def buscar_conta():
-    
+    '''
+    - Realiza busca pela conta, com base no numero da conta
+        - Se existir
+            - Imprime numero da conta e demais dados do dicionário do usuário
+        - Se não
+            - Imprime mensagem de erro, conta não existe.
+
+    Função criada por Matheus Felipe Braga
+    '''
 
 def dados():
+    '''
+    - Dados primários utilizados no programa.
+
+    Função criada por Matheus Felipe Braga
+    '''
+
     LIMITE_SAQUES = 3
     AGENCIA = '0001'
 
@@ -121,22 +212,37 @@ def dados():
 
 
 def main():
+    '''
+    - Roda opção para acesso a todas as funções criadas.
+        - Enquanto as opções satisfazerem o programa 
+            - Se a opção for 1, aciona a função deposito
+            - Se a opção for 2, aciona a função extrato
+            - Se a opção for 3, aciona a função cria usuário
+            - Se a opção for 4, aciona a função saque
+            - Se a opção for 5, aciona a função cria conta
+            - Se a opção for 6, aciona a função busca conta
+            - Se a opção for 7, sai do programa
+            - Se a opção for outra, aciona uma mensagem de erro, como opção inválida
+
+    Função criada por Matheus Felipe Braga
+    '''
+    
     dados()
     while True:
         opcao = menu()
 
         if opcao == 1:
             titulo('   DEPOSITO   \n')
-            saldo, extrato = deposito(saldo, valor, extrato)
+            saldo, extrato = deposito(saldo, extrato)
 
         elif opcao == 2:
             saldo, extrato = saque(
-                saldo=saldo,
-                valor=valor,
-                extrato=extrato,
-                limite=limite,
-                numero_saques=numero_saques,
-                limite_saques=LIMITE_SAQUES,
+                saldo='saldo',
+                valor='valor',
+                extrato='extrato',
+                limite='limite',
+                numero_saques='numero_saques',
+                limite_saques='LIMITE_SAQUES',
             )
 
         elif opcao == 3:
