@@ -17,7 +17,7 @@ def menu():
     Função criada por Matheus Felipe Braga
     '''
     titulo('   MENU PRINCIPAL   ')
-    print(f'''
+    menu = print(f'''
 [1] - DEPOSITO
 [2] - SAQUE
 [3] - EXTRATO
@@ -33,7 +33,7 @@ INFORME A OPÇÃO DESEJADA ==>  ''')
 def deposito(saldo, valor, extrato, /):
     '''
     - Deposita valor na conta 
-        - Todos os parâmetros deverão ser por preposição
+        - Todos os parâmetros deverão ser por posição
         - Pede para digitar um valor flutuante.
         - Se o valor for maior que 0: 
             - O valor será somado ao saldo. O valor também será somado ao extrato.
@@ -43,7 +43,6 @@ def deposito(saldo, valor, extrato, /):
     Função criada por Matheus Felipe Braga
     '''
     
-    valor = float(input('Informe o valor que deseja depositar.\n\n==>  '))
     if valor > 0:
         saldo = saldo + valor
         extrato = extrato + f'Depósito: R$ {valor:.2f}\n'
@@ -71,22 +70,23 @@ def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
     Função criada por Matheus Felipe Braga
     '''
-    valor = float(input('Informe o valor que deseja sacar.\n\n==>  '))
+    
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
-    excedeu_saques = numero_saques > limite_saques - 1
+    excedeu_saques = numero_saques > limite_saques
 
-    if excedeu_saldo:
+    if valor > 0:
+        saldo = saldo - valor
+        numero_saques = numero_saques + 1
+        limite = limite - valor
+        extrato = extrato + f'Saque R$: {valor:.2f}\nLimite restante R$: {limite:.2f}\nNumero de saques diários restantes:  {limite_saques - numero_saques}\nSaldo em conta R$: {saldo:.2f}\n\n'
+        titulo('  SAQUE REALIZADO COM SUCESSO.  ')
+    elif excedeu_saldo:
         titulo('~~~ Falha. Saldo insuficiente. ~~~')
     elif excedeu_limite:
         titulo('~~~ Falha. O valor do saque excedeu o limite. ~~~')
     elif excedeu_saques:
         titulo('~~~ Falha. Você excedeu o número limite de saques diários. ~~~')
-    elif valor > 0:
-        saldo = saldo - valor
-        extrato = extrato - f'Depósito: R$ {valor:.2f}\n'
-        numero_saques = numero_saques + 1
-        titulo('  SAQUE REALIZADO COM SUCESSO.  ')
     else:
         titulo('~~~ Falha. Valor informado inválido. ~~~')
 
@@ -103,7 +103,8 @@ def imprime_extrato(saldo, /, *, extrato):
     '''
 
     if extrato:
-        titulo(f'   Saldo: R$ {saldo:.2f}.   ')
+        titulo(extrato)
+        
     else:
         titulo('~~~ Não existem movimentações em sua conta. ~~~')
 
@@ -155,7 +156,7 @@ def filtra_usuario(cpf, usuarios):
         if usuario['cpf'] == cpf:
             return filtro_de_usuarios[0]
         else:
-            return None
+            return
     
 
 def cria_conta(agencia, numero_conta, usuarios, contas):
@@ -179,10 +180,10 @@ def cria_conta(agencia, numero_conta, usuarios, contas):
         titulo('   CONTA CRIADA   ')
         return {'agencia':agencia, 'numero':numero_conta, 'usuario':usuario}
     
-    titulo('~~~ Usuário nã encontrado, faça o cadastro do usuário. ~~~')
+    titulo('~~~ Usuário não encontrado, faça o cadastro do usuário. ~~~')
 
 
-def buscar_conta():
+def buscar_conta(usuario):
     '''
     - Realiza busca pela conta, com base no numero da conta
         - Se existir
@@ -192,24 +193,14 @@ def buscar_conta():
 
     Função criada por Matheus Felipe Braga
     '''
+    conta = usuario.get(input('Digite o numero da conta do usuário desejado.\n==>  '))
 
-def dados():
-    '''
-    - Dados primários utilizados no programa.
-
-    Função criada por Matheus Felipe Braga
-    '''
-
-    LIMITE_SAQUES = 3
-    AGENCIA = '0001'
-
-    saldo = 0
-    limite = 500
-    extrato = ''
-    numero_saques = 0
-    usuarios = []
-    contas = []
-
+    if conta:
+        titulo(f'   CONTA ENCONTRADA   ')
+        print(conta)
+    else:
+        titulo('~~~ Conta inexistente ~~~\n')
+    
 
 def main():
     '''
@@ -226,23 +217,32 @@ def main():
 
     Função criada por Matheus Felipe Braga
     '''
+    LIMITE_SAQUES = 3
+    AGENCIA = '0001'
+
+    saldo = 0
+    limite = 500
+    extrato = ''
+    numero_saques = 0
+    usuarios = []
+    contas = []
     
-    dados()
     while True:
         opcao = menu()
-
         if opcao == 1:
             titulo('   DEPOSITO   \n')
-            saldo, extrato = deposito(saldo, extrato)
+            valor = float(input('Informe o valor que deseja depositar.\n\n==>  '))
+            saldo, extrato = deposito(saldo, valor, extrato)
 
         elif opcao == 2:
+            valor = float(input('Informe o valor que deseja sacar.\n\n==>  '))
             saldo, extrato = saque(
-                saldo='saldo',
-                valor='valor',
-                extrato='extrato',
-                limite='limite',
-                numero_saques='numero_saques',
-                limite_saques='LIMITE_SAQUES',
+                saldo=saldo,
+                valor=valor,
+                extrato=extrato,
+                limite=limite,
+                numero_saques=numero_saques,
+                limite_saques=LIMITE_SAQUES,
             )
 
         elif opcao == 3:
@@ -252,17 +252,17 @@ def main():
             cria_usuario(usuarios)
 
         elif opcao == 5:
-            cria_conta(AGENCIA, numero_conta, usuarios, contas)
-
+            cria_conta()
 
         elif opcao == 6:
             buscar_conta()
 
-
         elif opcao == 7:
             titulo('   SAINDO DO PROGRAMA   ')
             break
-
+        
         else:
             titulo('   OPÇÃO INVÁLIDA. TENTE NOVAMENTE!   ')
 
+
+main()
