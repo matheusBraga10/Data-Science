@@ -124,19 +124,19 @@ def cria_usuario(usuarios):
     '''
 
     cpf = input('Informe o CPF (somente os números).\n==>  ')
-    usuario = filtra_usuario(cpf, usuario)
+    usuario = filtra_usuario(cpf, usuarios)
 
     if usuario:
         titulo('~~~ Este CPF já possui cadastro. ~~~')
         return
     nome = input(' Informe o nome completo.\n==>  ')
     data_nascimento = input('Informe a data de nascimento (dd-mm-aaaa).\n==>  ')
-    endereco = logradouro + bairro + cidade
     logradouro = input('Informe logradouro (rua, n°/complemento).\n==>  ')
     bairro = input('Informe seu bairro.\n==>  ')
     cidade = input('Informe sua cidade e estado (Cidade/Sigla estado).\n==>  ')
+    endereco = logradouro + bairro + cidade
 
-    usuario.append({'cpf':cpf, 'nome':nome, 'data_nascimento': data_nascimento, 'endereco':endereco})
+    usuarios.append({'cpf':cpf, 'nome':nome, 'data_nascimento': data_nascimento, 'endereco':endereco})
     titulo('   USUÁRIO CRIADO COM SUCESSO.   ')
 
 
@@ -150,14 +150,9 @@ def filtra_usuario(cpf, usuarios):
 
     Função criada por Matheus Felipe Braga
     '''
-    filtro_de_usuarios = usuario['cpf']
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario['cpf'] == cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else None
 
-    for usuario in usuarios:
-        if usuario['cpf'] == cpf:
-            return filtro_de_usuarios[0]
-        else:
-            return
-    
 
 def cria_conta(agencia, numero_conta, usuarios, contas):
     '''
@@ -183,7 +178,7 @@ def cria_conta(agencia, numero_conta, usuarios, contas):
     titulo('~~~ Usuário não encontrado, faça o cadastro do usuário. ~~~')
 
 
-def buscar_conta(usuario):
+def buscar_conta(contas):
     '''
     - Realiza busca pela conta, com base no numero da conta
         - Se existir
@@ -193,11 +188,14 @@ def buscar_conta(usuario):
 
     Função criada por Matheus Felipe Braga
     '''
-    conta = usuario.get(input('Digite o numero da conta do usuário desejado.\n==>  '))
 
-    if conta:
+    for conta in contas:
         titulo(f'   CONTA ENCONTRADA   ')
-        print(conta)
+        print(f'''
+              Agencia: {conta['agencia']}
+              C/C: {conta['numero_conta']}
+              Titular: {conta['usuario']['nome']}
+              ''')
     else:
         titulo('~~~ Conta inexistente ~~~\n')
     
@@ -226,6 +224,7 @@ def main():
     numero_saques = 0
     usuarios = []
     contas = []
+    numero_conta = 1
     
     while True:
         opcao = menu()
@@ -252,10 +251,14 @@ def main():
             cria_usuario(usuarios)
 
         elif opcao == 5:
-            cria_conta()
+            conta = cria_conta(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
+                numero_conta = numero_conta + 1
 
         elif opcao == 6:
-            buscar_conta()
+            buscar_conta(usuarios)
 
         elif opcao == 7:
             titulo('   SAINDO DO PROGRAMA   ')
