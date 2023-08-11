@@ -30,13 +30,13 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     excedeu_saques = numero_saques >= limite_saques
 
     if excedeu_saldo:
-        print('\n@@@ Operação falho! Você não tem saldo suficiente. @@@')
+        print('\n@@@ Operação falhou! Você não tem saldo suficiente. @@@')
     
     elif excedeu_limite:
-        print('\n@@@ Operação falho! O valor do saque excede o limite. @@@')
+        print('\n@@@ Operação falhou! O valor do saque excede o limite. @@@')
         
     elif excedeu_saques:
-        print('\n@@@ Operação falho! Número máximo de sauqes excedido. @@@')
+        print('\n@@@ Operação falhou! Número máximo de sauqes excedido. @@@')
 
     elif valor > 0:
         saldo = saldo - valor
