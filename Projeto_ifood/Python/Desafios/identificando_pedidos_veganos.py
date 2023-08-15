@@ -4,10 +4,6 @@ def titulo():
     print('=--='*30)
 
 def main():   
-    numero_pedidos = int(input())
-    if numero_pedidos <= 0:
-            titulo()
-    for i in range(1, numero_pedidos + 1):
         prato = input()
         calorias = int(input())
         if calorias <= 0:
@@ -16,11 +12,16 @@ def main():
         if eh_veg == 's':
             eh_veg = 'Vegano'
         else:
-            eh_veg = 'Nao-Vegano'
+            eh_veg = 'Nao-vegano'
 
         vegano = {'numero_pedidos': i, 'prato': prato, 'eh_veg':eh_veg, 'calorias': calorias}
         
-        print(f"Pedido {vegano['numero_pedidos']}: {vegano['prato']} ({vegano['eh_veg']}) - {vegano['calorias']} calorias")
-    
+        return f"Pedido {vegano['numero_pedidos']}: {vegano['prato']} ({vegano['eh_veg']}) - {vegano['calorias']} calorias"
 
-main()
+
+numero_pedidos = int(input())
+if numero_pedidos <= 0:
+            titulo()
+for i in range(1, (numero_pedidos + 1), 1):
+    print(main())
+print()
