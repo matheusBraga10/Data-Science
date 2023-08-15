@@ -16,10 +16,11 @@ def main():
         if eh_veg == 's':
             eh_veg = 'Vegano'
         else:
-            eh_veg = 'Não é Vegano'
+            eh_veg = 'Nao-Vegano'
 
         vegano = {'numero_pedidos': i, 'prato': prato, 'eh_veg':eh_veg, 'calorias': calorias}
+        
         print(f"Pedido {vegano['numero_pedidos']}: {vegano['prato']} ({vegano['eh_veg']}) - {vegano['calorias']} calorias")
-
+    
 
 main()
