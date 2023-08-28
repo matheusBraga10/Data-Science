@@ -25,8 +25,8 @@ while opcao != 0:
         print('Exibindo o extrato...')
     elif opcao != 1 and opcao != 2:
         print('Opção inválida. Tente novamente.')
-else:
-    print('Saindo do programa')
+
+print('Saindo do programa')
 
 #------------------------------------------------------------
 for numero in range(100): # Numeros impares
