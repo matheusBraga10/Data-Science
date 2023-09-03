@@ -1,0 +1,32 @@
+
+USE BD_Exemplo
+
+--EXERCICIO 1
+--JOIN
+SELECT	E.Pnome_empr + ' ' + E.Unome_empr AS Nome_Completo, EP.Funcao 
+FROM DBO.Empregados AS E
+JOIN Empregados_em_Projetos AS EP
+ON E.Cod_empr = EP.Cod_empr
+JOIN Projetos AS P
+ON EP.Cod_proj = P.Cod_proj
+WHERE EP.Funcao = 'Analista' AND P.Nome_proj = 'Mercury'
+
+--JOIN SQL
+SELECT	E.Pnome_empr + ' ' + E.Unome_empr AS Nome_Completo, EP.Funcao 
+FROM DBO.Empregados AS E, DBO.Empregados_em_Projetos AS EP, DBO.Projetos AS P
+WHERE EP.Funcao = 'Analista' AND P.Nome_proj = 'Mercury' AND E.Cod_empr = EP.Cod_empr AND EP.Cod_proj = P.Cod_proj
+
+--SUBCONSULTA
+SELECT	E.Pnome_empr + ' ' + E.Unome_empr AS Nome_Completo
+FROM DBO.Empregados AS E
+WHERE E.Cod_empr IN (SELECT EP.Cod_empr
+						FROM DBO.Empregados_em_Projetos AS EP
+						WHERE ep.Funcao = 'Analista' AND EP.Cod_proj IN (SELECT p.Cod_proj
+																			FROM DBO.Projetos AS P
+																			WHERE P.Nome_proj = 'Mercury'))
+																			
+--EXERCICIO 2
+--JOIN SQL
+SELECT	Ep.Cod_proj, EP.Cod_empr
+FROM DBO.Empregados AS E, DBO.Empregados_em_Projetos AS EP, DBO.Projetos AS P
+WHERE e.Unome_empr = 'Barrimore' AND E.Cod_empr > EP.Cod_empr

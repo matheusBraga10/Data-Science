@@ -1,0 +1,214 @@
+
+
+EXERCICIO 1
+
+USE BD_Exemplo
+
+SELECT *  
+FROM dbo.Empregados_em_Projetos EMP
+JOIN dbo.Projetos pj ON emP.Cod_proj = PJ.Cod_proj
+WHERE PJ.Nome_proj ='GEMINI'
+
+RESULTADO
+
+18316	P2	NULL		1998-06-01 00:00:00.000	P2	Gemini	95000,00
+25348	P2	Assistente	1998-02-15 00:00:00.000	P2	Gemini	95000,00
+28559	P2	Assistente	1999-02-01 00:00:00.000	P2	Gemini	95000,00
+29346	P2	NULL		1997-12-15 00:00:00.000	P2	Gemini	95000,00
+
+
+EXERCICIO 2
+
+USE BD_Exemplo
+
+SELECT * 
+FROM DBO.Empregados 
+CROSS JOIN DBO.Departamentos
+
+RESULTADO
+
+2581	Elsa	Hansel	D2	D1	Pesquisa	Dallas
+9031	Elke	Dertoni	D2	D1	Pesquisa	Dallas
+10102	Ann	Jones	D3	D1	Pesquisa	Dallas
+18316	John	Barrimore	D1	Pesquisa	Dallas
+25348	Matthew	Smith	D3	D1	Pesquisa	Dallas
+28559	Sybill	Moser	D1	D1	Pesquisa	Dallas
+29346	James	James	D2	D1	Pesquisa	Dallas
+2581	Elsa	Hansel	D2	D2	Contabilidade	Seattle
+9031	Elke	Dertoni	D2	D2	Contabilidade	Seattle
+10102	Ann	Jones	D3	D2	Contabilidade	Seattle
+18316	John	Barrimore	D1	Contabilidade	Seattle
+25348	Matthew	Smith	D3	D2	Contabilidade	Seattle
+28559	Sybill	Moser	D1	D2	Contabilidade	Seattle
+29346	James	James	D2	D2	Contabilidade	Seattle
+2581	Elsa	Hansel	D2	D3	Marketing	Dallas
+9031	Elke	Dertoni	D2	D3	Marketing	Dallas
+10102	Ann	Jones	D3	D3	Marketing	Dallas
+18316	John	Barrimore	D1	Marketing	Dallas
+25348	Matthew	Smith	D3	D3	Marketing	Dallas
+28559	Sybill	Moser	D1	D3	Marketing	Dallas
+29346	James	James	D2	D3	Marketing	Dallas
+
+EXERCICIO 3
+
+USE BD_Exemplo
+
+SELECT * 
+FROM DBO.Projetos PJ
+CROSS JOIN DBO.Empregados_em_Projetos EMPJ
+WHERE PJ.Cod_proj = 'P3'
+
+
+RESULTADO
+
+P3	Mercury	185600,00	2581	P3	Analista	1998-10-15 00:00:00.000
+P3	Mercury	185600,00	9031	P1	Gerente		1998-04-15 00:00:00.000
+P3	Mercury	185600,00	9031	P3	Assistente	1998-11-15 00:00:00.000
+P3	Mercury	185600,00	10102	P1	Analista	1997-10-01 00:00:00.000
+P3	Mercury	185600,00	10102	P3	Gerente		1999-01-01 00:00:00.000
+P3	Mercury	185600,00	18316	P2	NULL		1998-06-01 00:00:00.000
+P3	Mercury	185600,00	25348	P2	Assistente	1998-02-15 00:00:00.000
+P3	Mercury	185600,00	28559	P1	NULL		1998-08-01 00:00:00.000
+P3	Mercury	185600,00	28559	P2	Assistente	1999-02-01 00:00:00.000
+P3	Mercury	185600,00	29346	P1	Assistente	1998-01-04 00:00:00.000
+P3	Mercury	185600,00	29346	P2	NULL		1997-12-15 00:00:00.000
+
+
+EXERCICIO 4
+
+USE BD_Exemplo
+
+SELECT e.Cod_depa, E.Pnome_empr , EMPJ.Cod_proj,EMPJ.Data_inicio
+FROM Empregados e
+JOIN Empregados_em_Projetos empj ON e.Cod_empr = empj.Cod_empr
+WHERE CONVERT(DATE, empj.Data_inicio, 103) = '1998-10-15';
+
+RESULTADO
+
+D2	Elsa	P3	1998-10-15 00:00:00.000
+
+
+EXERCICIO 5
+
+USE BD_Exemplo
+
+SELECT EMP.*, DEP.*
+FROM DBO.Empregados EMP
+JOIN DBO.Departamentos DEP
+ON EMP.Cod_depa = DEP.Cod_depa
+WHERE EMP.Pnome_empr > DEP.Localizacao
+ORDER BY EMP.Pnome_empr
+
+RESULTADO 
+		
+18316	John	Barrimore	D1	D1		Pesquisa	Dallas
+25348	Matthew	Smith		D3	D3		Marketing	Dallas
+28559	Sybill	Moser		D1	D1		Pesquisa	Dallas
+
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+
+EXERCICIO 6
+
+USE BD_Exemplo
+
+SELECT ep.Pnome_empr, ep.Unome_empr, empj.Funcao, dep.Localizacao
+FROM dbo.Empregados ep 
+JOIN dbo.Empregados_em_Projetos empj ON ep.Cod_empr = empj.Cod_empr
+JOIN dbo.Departamentos dep ON ep.Cod_depa = dep.Cod_depa
+WHERE dep.Localizacao = 'Seattle' AND empj.Funcao = 'Analista';
+
+RESULTADO
+
+Elsa	Hansel	Analista  Seattle
+
+
+
+EXERCICIO 7
+
+
+USE BD_Exemplo
+
+SELECT  DISTINCT PJ.Nome_proj, DEP.Nome_depa
+FROM DBO.Projetos PJ
+JOIN DBO.Empregados_em_Projetos EMPJ ON PJ.Cod_proj = EMPJ.Cod_proj
+JOIN DBO.Empregados EMP ON EMPJ.Cod_empr = EMP.Cod_empr
+JOIN DBO.Departamentos DEP ON EMP.Cod_depa = DEP.Cod_depa
+WHERE DEP.Nome_depa = 'CONTABILIDADE'
+
+
+RESULTADO
+
+Apollo	Contabilidade
+Gemini	Contabilidade
+Mercury	Contabilidade
+
+
+EXERCICIO 8
+
+USE BD_Exemplo
+
+SELECT DEP1.*
+FROM DBO.Departamentos DEP1
+JOIN DBO.Departamentos DEP2 ON DEP1.Localizacao = DEP2.Localizacao
+WHERE DEP1.Cod_depa <> DEP2.Cod_depa
+
+RESULTADO
+
+
+D1	Pesquisa	Dallas
+D3	Marketing	Dallas
+
+EXERCICIO 9
+
+USE BD_Exemplo
+
+SELECT  EMP1.Pnome_empr, EMP2.Unome_empr
+FROM DBO.Empregados EMP1
+JOIN DBO.Empregados EMP2 ON EMP1.Cod_depa = EMP2.Cod_depa
+WHERE EMP1.Cod_empr <> EMP2.Cod_empr
+
+
+
+RESULTADO
+
+Elsa	Dertoni
+Elsa	James
+Elke	Hansel
+Elke	James
+Ann	Smith
+John	Moser
+Matthew	Jones
+Sybill	Barrimore
+James	Hansel
+James	Dertoni
+
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+
+
+
+EXERCICIO 10
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+EXERCICIO 11
+
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+EXERCICIO 12
+
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+EXERCICIO 13
+
+
+OBS: NÃO EXISTE COLUNA DE ENDEREÇOS DE EMPREGADOS NO BANCO DE DADOS BD.EXEMPLO 
+
+
+
+
