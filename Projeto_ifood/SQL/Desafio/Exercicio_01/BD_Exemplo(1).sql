@@ -1,5 +1,5 @@
 
---Script para criar o Banco de Dados (BD_Exemplo) e suas tabelas, além de populá-las.
+--Script para criar o Banco de Dados (BD_Exemplo) e suas tabelas, alï¿½m de populï¿½-las.
 
 CREATE DATABASE BD_Exemplo
 GO
